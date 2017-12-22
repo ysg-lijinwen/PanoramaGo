@@ -1,0 +1,61 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+//if (isBuildModule.toBoolean()) {
+//
+//} else {
+apply plugin: 'com.jakewharton.butterknife'
+//}
+
+
+android {
+    compileSdkVersion 27
+    buildToolsVersion '26.0.2'
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+//        compileOptions {
+//            sourceCompatibility JavaVersion.VERSION_1_7
+//            targetCompatibility JavaVersion.VERSION_1_7
+//        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    productFlavors {
+    }
+}
+
+dependencies {
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile  fileTree(include: ['*.jar'], dir: 'libs')
+    compile files('libs/pinyin4j-2.5.0.jar')
+    compile 'com.android.support:multidex:1.0.2'
+    compile 'com.orhanobut:logger:2.1.1'
+    compile 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar'
+    compile 'org.greenrobot:eventbus:3.0.0'
+    compile 'com.gyf.barlibrary:barlibrary:2.3.0'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'jp.wasabeef:glide-transformations:2.0.1'
+    compile 'com.jakewharton:butterknife:8.4.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+    compile 'io.reactivex.rxjava2:rxjava:2.0.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile project(':remote-request')
+    compile 'junit:junit:4.12'
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compile "org.jetbrains.anko:anko-commons:$anko_version"
+    compile "org.jetbrains.anko:anko-sdk25:$anko_version"
+    compile 'com.android.support:design:27.0.2'
+}
+repositories {
+    mavenCentral()
+}

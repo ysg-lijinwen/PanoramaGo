@@ -1,0 +1,25 @@
+-- Merging decision tree log ---
+manifest
+ADDED from D:\qjg\PanoramaGo\recyclerview-lib\src\main\AndroidManifest.xml:1:1-4:12
+INJECTED from D:\qjg\PanoramaGo\recyclerview-lib\src\main\AndroidManifest.xml:1:1-4:12
+INJECTED from D:\qjg\PanoramaGo\recyclerview-lib\src\main\AndroidManifest.xml:1:1-4:12
+	package
+		ADDED from D:\qjg\PanoramaGo\recyclerview-lib\src\main\AndroidManifest.xml:1:11-54
+		INJECTED from D:\qjg\PanoramaGo\recyclerview-lib\src\main\AndroidManifest.xml
+		INJECTED from D:\qjg\PanoramaGo\recyclerview-lib\src\main\AndroidManifest.xml
+application
+ADDED from D:\qjg\PanoramaGo\recyclerview-lib\src\main\AndroidManifest.xml:3:5-20
+uses-sdk
+INJECTED from D:\qjg\PanoramaGo\recyclerview-lib\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from D:\qjg\PanoramaGo\recyclerview-lib\src\main\AndroidManifest.xml
+INJECTED from D:\qjg\PanoramaGo\recyclerview-lib\src\main\AndroidManifest.xml
+INJECTED from D:\qjg\PanoramaGo\recyclerview-lib\src\main\AndroidManifest.xml
+INJECTED from D:\qjg\PanoramaGo\recyclerview-lib\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from D:\qjg\PanoramaGo\recyclerview-lib\src\main\AndroidManifest.xml
+		ADDED from D:\qjg\PanoramaGo\recyclerview-lib\src\main\AndroidManifest.xml
+		INJECTED from D:\qjg\PanoramaGo\recyclerview-lib\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from D:\qjg\PanoramaGo\recyclerview-lib\src\main\AndroidManifest.xml
+		ADDED from D:\qjg\PanoramaGo\recyclerview-lib\src\main\AndroidManifest.xml
+		INJECTED from D:\qjg\PanoramaGo\recyclerview-lib\src\main\AndroidManifest.xml

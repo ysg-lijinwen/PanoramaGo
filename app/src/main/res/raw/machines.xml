@@ -1,0 +1,12 @@
+<!--machine name:{MANUFACTURER}_{MODEL},例如:  Xiaomi_MI 3 -->
+<machines>
+    <machine name="YuLong_Coolpad 8675">
+        <unsupport name="2_1"/>
+    </machine>
+     <machine name="Xiaomi_Redmi Note 3">
+        <unsupport name="sphere2eye"/>
+    </machine>
+    <machine name="vivo_vivo V3Max A">
+        <unsupport name="sphere2eye"/>
+    </machine>
+</machines>
