@@ -25,7 +25,7 @@
                 android:textSize="15sp"
                 android:textColor="@color/c_light_gray" />
 
-            <com.quanjinggo.base.view.tooglebutton.ToggleButton
+            <com.panorama.base.view.tooglebutton.ToggleButton
                 xmlns:toggle="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/tb_dialog_push_switch"
                 android:layout_width="50dp"

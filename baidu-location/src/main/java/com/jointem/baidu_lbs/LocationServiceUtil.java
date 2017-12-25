@@ -9,10 +9,10 @@ import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
-import com.quanjinggo.base.util.AlertDialogHelper;
-import com.quanjinggo.base.util.CommonConstants;
-import com.quanjinggo.base.util.UiUtil;
-import com.quanjinggo.base.util.Utils;
+import com.panorama.base.util.AlertDialogHelper;
+import com.panorama.base.util.CommonConstants;
+import com.panorama.base.util.UiUtil;
+import com.panorama.base.util.Utils;
 
 /**
  * 百度定位工具
