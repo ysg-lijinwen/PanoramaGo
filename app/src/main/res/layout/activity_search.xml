@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.panorama.go.activity.SearchActivity">
 
     <include
         android:id="@+id/i_top_layout"
-        layout="@layout/v_top_bar_first" />
+        layout="@layout/v_search_top" />
 
     <com.yanzhenjie.recyclerview.swipe.refresh.PullToRefreshRecyclerView xmlns:ptr="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/rvHome"
+        android:id="@+id/rvHotKey"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/i_top_layout"
         android:background="@color/c_main_white_bg"
         android:scrollbars="vertical"
-        ptr:ptrMode="both" />
+        ptr:ptrMode="disabled" />
+
 </RelativeLayout>

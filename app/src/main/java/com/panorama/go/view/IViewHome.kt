@@ -18,5 +18,5 @@ interface IViewHome : IView {
     /**
      * 填充信息列
      */
-    fun fillHomeInfo(homeInfos: MutableList<ListBean>)
+    fun fillHomeInfo(homeInfo: MutableList<ListBean>)
 }

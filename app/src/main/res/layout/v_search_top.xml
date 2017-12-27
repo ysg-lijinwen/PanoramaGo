@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_search"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/top_bar_height"
+    android:background="@color/colorPrimary">
+
+    <RelativeLayout
+        android:id="@+id/rlBack"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:visibility="visible">
+
+        <ImageView
+            android:id="@+id/imvBack"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/content_description"
+            android:paddingEnd="2dp"
+            android:paddingStart="12dp"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/ic_base_back"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/tvBack"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="2dp"
+            android:layout_toEndOf="@id/imvBack"
+            android:gravity="center_vertical"
+            android:text="@string/back"
+            android:textColor="@color/c_main_white_bg"
+            android:textSize="@dimen/top_back_size" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_toEndOf="@id/rlBack"
+        android:background="@drawable/bg_white_fillet_5"
+        android:gravity="clip_vertical">
+
+        <com.panorama.base.view.ClearEditText
+            android:id="@+id/etSearchKey"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="5dp"
+            android:layout_toStartOf="@+id/tvTopBarSearch"
+            android:background="@null"
+            android:cursorVisible="true"
+            android:drawableEnd="@mipmap/ic_clear"
+            android:gravity="center_vertical"
+            android:hint="@string/search"
+            android:imeOptions="actionSearch"
+            android:paddingEnd="2dp"
+            android:paddingStart="3dp"
+            android:privateImeOptions="@string/search"
+            android:singleLine="true"
+            android:textColor="@color/c_light_gray"
+            android:textCursorDrawable="@mipmap/et_cursor_line"
+            android:textSize="@dimen/org_selete_textsize"
+            android:visibility="visible" />
+
+        <LinearLayout
+            android:id="@+id/tvTopBarSearch"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:contentDescription="@string/content_description"
+                android:src="@mipmap/ic_search_gray_small" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

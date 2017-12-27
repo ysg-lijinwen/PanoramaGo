@@ -1,7 +1,6 @@
 package com.panorama.base
 
 import android.os.Bundle
-import android.view.View
 import butterknife.Unbinder
 import com.panorama.base.iView.IView
 import com.panorama.base.presenter.BasePresenter
@@ -22,10 +21,6 @@ abstract class MvpBaseFragment2<V : IView, T : BasePresenter<V>> : BaseFragment2
         iView.setPresenter()
         mPresenter!!.attachView(iView)
         mPresenter!!.initData()
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
     }
 
     override fun onDestroy() {

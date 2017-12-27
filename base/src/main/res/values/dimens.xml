@@ -14,6 +14,10 @@
     <dimen name="site_date_text_size">13sp</dimen>
     <!--ToolBar 返回文字大小-->
     <dimen name="top_back_size">15sp</dimen>
+    <!--顶部标题右侧操作文字大小-->
+    <dimen name="top_operation_size">15sp</dimen>
+    <!--标题栏文字大小-->
+    <dimen name="top_title_size">17sp</dimen>
 
     <!--分割条高度-->
     <dimen name="divider_space_height">10dp</dimen>
@@ -59,8 +63,6 @@
     <dimen name="major_text_size">15sp</dimen>
     <!-- 辅助文字字体大小 -->
     <dimen name="minor_text_size">13sp</dimen>
-    <!--标题栏文字大小-->
-    <dimen name="top_title_size">17sp</dimen>
 
     <dimen name="indicator_right_padding">10dp</dimen>
     <dimen name="indicator_corner_radius">12dp</dimen>

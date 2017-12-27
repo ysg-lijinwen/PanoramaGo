@@ -1,4 +1,4 @@
-package com.panorama.go.fragment
+package com.panorama.go.activity
 
 import android.graphics.Bitmap
 import android.os.Looper
@@ -7,34 +7,32 @@ import android.util.Log
 import android.view.View
 import android.widget.SeekBar
 import android.widget.Toast
-import com.panorama.base.MvpBaseFragment2
+import com.panorama.base.BaseActivity
 import com.panorama.go.R
-import com.panorama.go.bean.ListBean
-import com.panorama.go.presenter.HomePresenter
 import com.panorama.go.util.DTListDialog
-import com.panorama.go.view.IViewHome
 import com.player.data.panoramas.Hotspot
 import com.player.data.panoramas.PanoramaData
 import com.player.panoplayer.*
 import com.player.panoplayer.plugin.VideoPlugin
 import com.player.panoplayer.plugin.WVideoPlugin
-import kotlinx.android.synthetic.main.fragment_home1.view.*
+import kotlinx.android.synthetic.main.activity_panorama_go.*
 import tv.danmaku.ijk.media.player.IjkMediaPlayer
 import tv.danmaku.ijk.media.player.StatisticsData
 import java.util.*
 
-/**
- * Description:首页
- * Created by Kevin.Li on 2017-12-08.
- */
-class HomeFragment1 : MvpBaseFragment2<IViewHome, HomePresenter>(), IViewHome, IPanoPlayerListener, IPanoPlayerVideoPluginListener,
+class PanoramaGoActivity : BaseActivity(), IPanoPlayerListener, IPanoPlayerVideoPluginListener,
         IPanoPlayerHotpotListener, IScreenShot, SeekBar.OnSeekBarChangeListener {
-    override fun fillCarousel(carouselList: MutableList<ListBean>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    private var panoplayer_renderer: PanoPlayer? = null
+    private var playerStatus: PanoPlayer.PanoVideoPluginStatus = PanoPlayer.PanoVideoPluginStatus.VIDEO_STATUS_STOP
+    private var isSeekBarDragging: Boolean = false
+    private var vplugin: Plugin? = null
+    private var panoplayerurl: PanoPlayerUrl = PanoPlayerUrl()
+    private var menuDialog: DTListDialog? = null
+    private val PanoPlayer_Template = "<DetuVr> " + "<settings init=\"pano1\" initmode=\"default\" enablevr=\"true\" title=\"\"/>" + "<scenes> " + "<scene name=\"pano1\" title=\"\" thumburl=\"\" >" + "<preview url=\"%s\" type=\"CUBESTRIP\" />" + "<image type = \"%s\" url =\"%s\" device = \"0\" />" + "<view fovmin='110' fovmax='170' gyroEnable=\"false\"/>" + "</scene>" + "</scenes>" + "</DetuVr>"
 
-    override fun fillHomeInfo(homeInfos: MutableList<ListBean>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun setRootView() {
+        super.setRootView()
+        setContentView(R.layout.activity_panorama_go)
     }
 
     override fun PanoPlayOnLoading() {
@@ -49,9 +47,9 @@ class HomeFragment1 : MvpBaseFragment2<IViewHome, HomePresenter>(), IViewHome, I
         // 用于初始化视频的各种参数
         val plugin = panoplayer_renderer?.curPlugin
         if (plugin != null && (plugin is VideoPlugin || plugin is WVideoPlugin)) {
-            rootView.videolay.visibility = View.VISIBLE
+            videolay.visibility = View.VISIBLE
         } else {
-            rootView.videolay.visibility = View.GONE
+            videolay.visibility = View.GONE
         }
     }
 
@@ -60,7 +58,7 @@ class HomeFragment1 : MvpBaseFragment2<IViewHome, HomePresenter>(), IViewHome, I
     }
 
     override fun PanoPlayOnError(p0: PanoPlayer.PanoPlayerErrorCode?) {
-        Toast.makeText(mContext, p0?.name, Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, p0?.name, Toast.LENGTH_SHORT).show()
     }
 
     override fun PluginVideoOnStatisticsChanged(p0: StatisticsData?) {
@@ -74,7 +72,7 @@ class HomeFragment1 : MvpBaseFragment2<IViewHome, HomePresenter>(), IViewHome, I
                 vplugin = plugin
                 //videoPlugin.setOption(PlayerOption.OPT_CATEGORY_PLAYER, "haha", 1);
                 (vplugin as VideoPlugin).setLogLevel(IjkMediaPlayer.IJK_LOG_SILENT)
-                rootView.videolay.visibility = View.VISIBLE
+                videolay.visibility = View.VISIBLE
             } else if (plugin is WVideoPlugin) {
                 vplugin = plugin
                 (vplugin as WVideoPlugin).setLogLevel(IjkMediaPlayer.IJK_LOG_VERBOSE)
@@ -90,13 +88,13 @@ class HomeFragment1 : MvpBaseFragment2<IViewHome, HomePresenter>(), IViewHome, I
         Log.d("PanoPlay", "PluginVideoOnProgressChanged:" + p0)
 
         if (!isSeekBarDragging) {
-            rootView.sb_progress.max = p2
-            rootView.sb_progress.secondaryProgress = p1
-            rootView.sb_progress.progress = p0
+            sb_progress.max = p2
+            sb_progress.secondaryProgress = p1
+            sb_progress.progress = p0
         }
 
-        rootView.lable2.text = formatDuring(p2.toLong())
-        rootView.lable1.text = formatDuring(p0.toLong())
+        lable2.text = formatDuring(p2.toLong())
+        lable1.text = formatDuring(p0.toLong())
     }
 
     override fun PluginVideOnPlayerError(p0: PanoPlayer.PanoPlayerErrorStatus?, p1: String?) {
@@ -107,16 +105,16 @@ class HomeFragment1 : MvpBaseFragment2<IViewHome, HomePresenter>(), IViewHome, I
         playerStatus = p0!!
         when (p0) {
             PanoPlayer.PanoVideoPluginStatus.VIDEO_STATUS_PAUSE -> {
-                rootView.btn_play?.post({ rootView.btn_play.text = "播放" })
+                btn_play?.post({ btn_play.text = "播放" })
                 Log.d("PanoPlay", "PluginVideoOnStatusChanged to pause")
             }
             PanoPlayer.PanoVideoPluginStatus.VIDEO_STATUS_STOP -> {
-                rootView.btn_play.post({ rootView.btn_play.text = "停止" })
+                btn_play.post({ btn_play.text = "停止" })
                 Log.d("PanoPlay", "PluginVideoOnStatusChanged to stop")
-                rootView.sb_progress.progress = 0
+                sb_progress.progress = 0
             }
             PanoPlayer.PanoVideoPluginStatus.VIDEO_STATUS_PLAYING -> {
-                rootView.btn_play.post({ rootView.btn_play.text = "暂停" })
+                btn_play.post({ btn_play.text = "暂停" })
                 Log.d("PanoPlay", "PluginVideoOnStatusChanged to play")
             }
             PanoPlayer.PanoVideoPluginStatus.VIDEO_STATUS_FINISH ->
@@ -162,44 +160,21 @@ class HomeFragment1 : MvpBaseFragment2<IViewHome, HomePresenter>(), IViewHome, I
         }
     }
 
-    private var panoplayer_renderer: PanoPlayer? = null
-    private var playerStatus: PanoPlayer.PanoVideoPluginStatus = PanoPlayer.PanoVideoPluginStatus.VIDEO_STATUS_STOP
-    private var isSeekBarDragging: Boolean = false
-    private var vplugin: Plugin? = null
-    private var panoplayerurl: PanoPlayerUrl = PanoPlayerUrl()
-    private var menuDialog: DTListDialog? = null
-    private val PanoPlayer_Template = "<DetuVr> " + "<settings init=\"pano1\" initmode=\"default\" enablevr=\"true\" title=\"\"/>" + "<scenes> " + "<scene name=\"pano1\" title=\"\" thumburl=\"\" >" + "<preview url=\"%s\" type=\"CUBESTRIP\" />" + "<image type = \"%s\" url =\"%s\" device = \"0\" />" + "<view fovmin='110' fovmax='170' gyroEnable=\"false\"/>" + "</scene>" + "</scenes>" + "</DetuVr>"
-
-    override fun setPresenter() {
-        mPresenter = HomePresenter(mContext)
-    }
-
-    override fun initRootViewResource(): Int {
-        return R.layout.fragment_home
-    }
-
-    companion object {
-        fun newInstance(): HomeFragment1 {
-            val fragment = HomeFragment1()
-            return fragment
-        }
-    }
-
     override fun initWidget() {
         super.initWidget()
-        rootView.sb_Brightness.setOnSeekBarChangeListener(this)
-        rootView.sb_Contrast.setOnSeekBarChangeListener(this)
-        rootView.sb_Saturation.setOnSeekBarChangeListener(this)
+        sb_Brightness.setOnSeekBarChangeListener(this)
+        sb_Contrast.setOnSeekBarChangeListener(this)
+        sb_Saturation.setOnSeekBarChangeListener(this)
 
-        panoplayer_renderer = rootView.glview.render
+        panoplayer_renderer = glview.render
         panoplayer_renderer?.listener = this
         panoplayer_renderer?.videoPluginListener = this
         panoplayer_renderer?.hotpotListener = this
         panoplayer_renderer?.gyroEnable = true
         panoplayer_renderer?.setGestureEnable(true)
-        rootView.playPhoto.performClick()
+        playPhoto.performClick()
         panoplayer_renderer?.setOnClickPanoViewListener { _, _ ->
-            val menuLay = rootView.menu_layer
+            val menuLay = menu_layer
             if (menuLay.visibility == View.VISIBLE) {
                 menuLay.visibility = View.INVISIBLE
             } else {
@@ -207,8 +182,8 @@ class HomeFragment1 : MvpBaseFragment2<IViewHome, HomePresenter>(), IViewHome, I
             }
         }
         panoplayer_renderer?.setOnLongClickPanoViewListener { _, _ -> }
-        rootView.videolay.visibility = View.GONE
-        menuDialog = DTListDialog(mContext)
+        videolay.visibility = View.GONE
+        menuDialog = DTListDialog(context)
         menuDialog!!.setTitle("请选择功能")
 
         menuDialog!!.setTitle("请选择功能").setItems(arrayOf("平面模式", "VR模式_左右", "小行星模式", "全景模式", "鱼眼模式", "半球模式", "VR模式_上下", "截屏"), { _, _, position ->
@@ -266,10 +241,10 @@ class HomeFragment1 : MvpBaseFragment2<IViewHome, HomePresenter>(), IViewHome, I
             menuDialog?.dismiss()
         })
 
-        rootView.playPhoto.setOnClickListener {
+        playPhoto.setOnClickListener {
             val imgPath = "assets://pano.jpeg"
-            if (!TextUtils.isEmpty(rootView.inputUrl.text.toString())) {
-                panoplayerurl.setXmlUrl(rootView.inputUrl.text.toString())
+            if (!TextUtils.isEmpty(inputUrl.text.toString())) {
+                panoplayerurl.setXmlUrl(inputUrl.text.toString())
                 panoplayer_renderer?.Play(panoplayerurl)
             } else {
                 val xmlstring = String.format(PanoPlayer_Template, "", "sphere", imgPath)
@@ -278,8 +253,8 @@ class HomeFragment1 : MvpBaseFragment2<IViewHome, HomePresenter>(), IViewHome, I
             }
         }
 
-        rootView.playVideo.setOnClickListener {
-            var path = rootView.inputUrl.text.toString()
+        playVideo.setOnClickListener {
+            var path = inputUrl.text.toString()
             //path = "mnt/sdcard/bug.mp4";
             //path = "rtmp://pili-live-rtmp.live.detu.com/detulive/sqr222";
             path = "rtsp://192.168.42.1/tmp/SD0/DCIM/161206000/182420AB.MP4"
@@ -290,7 +265,10 @@ class HomeFragment1 : MvpBaseFragment2<IViewHome, HomePresenter>(), IViewHome, I
             //path = "mnt/sdcard/video-103729.mp4";
             //path = "rtmp://222.211.65.243/live/S23811315370860655221";
             //path = "rtsp://192.168.42.1/live";
-            path = "http://media.qicdn.detu.com/@/70955075-5571-986D-9DC4-450F13866573/2016-05-19/573d15dfa19f3-2048x1024.m3u8"
+//            path = "http://media.qicdn.detu.com/@/70955075-5571-986D-9DC4-450F13866573/2016-05-19/573d15dfa19f3-2048x1024.m3u8"//sdk提供
+            path = "assets://video01.mp4"//本地视频
+//            path = "assets://video02.mov"//本地视频
+
             if (TextUtils.isEmpty(path)) {
                 panoplayerurl.setXmlUrl("http://www.detu.com/ajax/pano/xml/159891")
             } else {
@@ -302,11 +280,11 @@ class HomeFragment1 : MvpBaseFragment2<IViewHome, HomePresenter>(), IViewHome, I
             values.add(value)
             panoplayer_renderer?.play(panoplayerurl, values)
         }
-        rootView.btMenu.setOnClickListener {
+        btMenu.setOnClickListener {
             menuDialog?.show()
         }
 
-        rootView.btn_play.setOnClickListener {
+        btn_play.setOnClickListener {
             when (playerStatus) {
                 PanoPlayer.PanoVideoPluginStatus.VIDEO_STATUS_PAUSE -> {
                     if (vplugin is VideoPlugin) {
@@ -340,12 +318,12 @@ class HomeFragment1 : MvpBaseFragment2<IViewHome, HomePresenter>(), IViewHome, I
 
     override fun onResume() {
         super.onResume()
-        rootView.glview.onResume()
+        glview.onResume()
     }
 
     override fun onPause() {
         super.onPause()
-        rootView.glview.onPause()
+        glview.onPause()
     }
 
     override fun initData() {

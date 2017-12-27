@@ -6,25 +6,22 @@ import android.view.View
 import android.view.ViewGroup
 import com.panorama.base.BaseRecyclerAdapter
 import com.panorama.go.R
-import com.panorama.go.bean.ListBean
 import com.panorama.go.util.inflate
-import com.panorama.go.util.loadImage
-import kotlinx.android.synthetic.main.item_home_info.view.*
+import kotlinx.android.synthetic.main.item_hot_key.view.*
 
 /**
- * Description:首页信息列表
+ * Description:热门词条
  * Created by Kevin.Li on 2017-12-25.
  */
-class InformationAdapter(ctx: Context, list: List<ListBean>) : BaseRecyclerAdapter<ListBean, InformationAdapter.ItemViewHolder>(ctx, list) {
+class HotKeyAdapter(ctx: Context, list: List<String>) : BaseRecyclerAdapter<String, HotKeyAdapter.ItemViewHolder>(ctx, list) {
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ItemViewHolder {
-        return ItemViewHolder(parent?.inflate(R.layout.item_home_info)!!)
+        return ItemViewHolder(parent?.inflate(R.layout.item_hot_key)!!)
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder?, position: Int) {
         super.onBindViewHolder(holder, position)
         with(holder!!) {
-            val info = itemList[position]
-            itemView.imvHomeInfo.loadImage(info.image)
+            itemView.tvHotKey.text = itemList[position]
         }
     }
 

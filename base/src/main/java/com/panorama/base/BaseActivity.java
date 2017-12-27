@@ -86,7 +86,14 @@ public class BaseActivity extends SwipeBackActivity implements I_initializer, Vi
     }
 
     public void initListener() {
-
+        if (findViewById(R.id.rlBack) != null) {
+            findViewById(R.id.rlBack).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    activity.finish();
+                }
+            });
+        }
     }
 
     @Override
