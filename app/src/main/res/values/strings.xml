@@ -5,4 +5,5 @@
     <string name="title_notifications">Notifications</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="search">搜索</string>
+    <string name="search_hot_key">最热搜索</string>
 </resources>

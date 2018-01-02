@@ -3,7 +3,7 @@
     android:id="@+id/rl_from_other"
     android:layout_width="match_parent"
     android:layout_height="@dimen/top_bar_height"
-    android:background="@color/colorPrimary"
+    android:background="@color/c_main_white_bg"
     android:fitsSystemWindows="true"
     android:gravity="center_vertical">
 
@@ -14,13 +14,13 @@
         android:visibility="visible">
 
         <ImageView
-            android:id="@+id/imvBack"
+            android:id="@+id/imvLeft"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
             android:layout_centerVertical="true"
             android:contentDescription="@string/content_description"
             android:paddingEnd="2dp"
-            android:paddingStart="12dp"
+            android:paddingStart="8dp"
             android:scaleType="fitCenter"
             android:src="@mipmap/ic_base_back"
             android:visibility="gone" />
@@ -34,7 +34,7 @@
             android:layout_toEndOf="@id/imvLeft"
             android:gravity="center_vertical"
             android:text="@string/back"
-            android:textColor="@color/c_main_white_bg"
+            android:textColor="@color/c_main_black"
             android:textSize="@dimen/top_back_size" />
 
     </RelativeLayout>
@@ -71,7 +71,7 @@
             android:layout_centerVertical="true"
             android:gravity="center"
             android:text="@string/more"
-            android:textColor="@color/c_main_white_bg"
+            android:textColor="@color/c_main_black"
             android:textSize="@dimen/top_operation_size"
             android:visibility="visible" />
 

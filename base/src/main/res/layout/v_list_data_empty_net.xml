@@ -34,7 +34,7 @@
             android:gravity="center"
             android:paddingTop="20dp"
             android:text="点击刷新网络"
-            android:textColor="@color/c_main_orange"
+            android:textColor="@color/c_main_blue"
             />
 
     </LinearLayout>

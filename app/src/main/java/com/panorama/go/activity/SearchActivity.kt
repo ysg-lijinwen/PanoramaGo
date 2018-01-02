@@ -12,7 +12,7 @@ import com.panorama.go.util.singleClick
 import com.panorama.go.util.visible
 import com.panorama.go.view.IViewSearch
 import kotlinx.android.synthetic.main.activity_search.*
-import kotlinx.android.synthetic.main.v_search_top.*
+import kotlinx.android.synthetic.main.v_search.*
 import org.jetbrains.anko.startActivity
 
 /**

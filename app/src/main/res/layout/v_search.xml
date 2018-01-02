@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:layout_margin="@dimen/activity_horizontal_margin"
+    android:background="@drawable/bg_gray_fillet_1">
+
+    <com.panorama.base.view.ClearEditText
+        android:id="@+id/etSearchKey"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:background="@null"
+        android:cursorVisible="true"
+        android:drawableEnd="@mipmap/ic_clear"
+        android:gravity="center_vertical"
+        android:hint="@string/search"
+        android:imeOptions="actionSearch"
+        android:paddingEnd="2dp"
+        android:paddingStart="5dp"
+        android:privateImeOptions="@string/search"
+        android:singleLine="true"
+        android:textColor="@color/c_light_gray"
+        android:textCursorDrawable="@mipmap/et_cursor_line"
+        android:textSize="@dimen/main_text_size"
+        android:visibility="visible" />
+
+    <View
+        android:layout_width="0.3dp"
+        android:layout_height="30dp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="5dp"
+        android:layout_toStartOf="@+id/tvTopBarSearch"
+        android:background="@color/c_gray" />
+
+    <TextView
+        android:id="@+id/tvTopBarSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="5dp"
+        android:drawablePadding="5dp"
+        android:drawableStart="@mipmap/ic_search_blue"
+        android:gravity="center_vertical"
+        android:text="@string/search"
+        android:textColor="@color/c_main_blue"
+        android:textSize="@dimen/main_text_size" />
+
+</RelativeLayout>

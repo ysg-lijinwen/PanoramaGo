@@ -1,22 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:orientation="vertical"
     tools:context="com.panorama.go.activity.SearchActivity">
 
-    <include
-        android:id="@+id/i_top_layout"
-        layout="@layout/v_search_top" />
+    <include layout="@layout/v_top_bar_second2" />
+
+    <include layout="@layout/v_base_divider_1dp" />
+
+    <include layout="@layout/v_search" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:gravity="center_vertical"
+        android:text="@string/search_hot_key"
+        android:textSize="@dimen/main_text_size" />
 
     <com.yanzhenjie.recyclerview.swipe.refresh.PullToRefreshRecyclerView xmlns:ptr="http://schemas.android.com/apk/res-auto"
         android:id="@+id/rvHotKey"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/i_top_layout"
         android:background="@color/c_main_white_bg"
         android:scrollbars="vertical"
         ptr:ptrMode="disabled" />
 
-</RelativeLayout>
+</LinearLayout>

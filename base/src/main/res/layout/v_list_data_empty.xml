@@ -43,7 +43,7 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:text="切换示范城市：玉溪市"
-            android:textColor="@color/c_main_orange"
+            android:textColor="@color/c_main_blue"
             android:textSize="@dimen/site_date_text_size"
             android:visibility="gone" />
 

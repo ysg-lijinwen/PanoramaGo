@@ -39,19 +39,16 @@
 
     </RelativeLayout>
 
-    <com.panorama.base.view.AlwaysMarqueeTextView
-        android:id="@+id/tvSubTitle"
+    <ImageView
+        android:id="@+id/imvSubTitle"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="20dp"
+        android:layout_centerVertical="true"
         android:layout_centerInParent="true"
-        android:layout_marginStart="5dp"
-        android:ellipsize="marquee"
-        android:focusable="true"
-        android:gravity="center"
-        android:maxEms="10"
-        android:singleLine="true"
-        android:textColor="@color/c_main_black"
-        android:textSize="@dimen/top_title_size" />
+        android:contentDescription="@string/content_description"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/ic_sub_title"
+        android:visibility="visible" />
 
     <RelativeLayout
         android:id="@+id/rlRight"

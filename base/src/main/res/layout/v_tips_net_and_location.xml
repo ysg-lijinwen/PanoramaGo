@@ -37,7 +37,7 @@
         android:background="@color/c_light_yellow"
         android:padding="10dp"
         android:text="@string/switch_city"
-        android:textColor="@color/c_main_text2" />
+        android:textColor="@color/c_secondary_text" />
     <LinearLayout
         android:orientation="horizontal"
         android:id="@+id/ll_relocation"
@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:text="定位失败，点击重新定位"
-            android:textColor="@color/c_main_text2" />
+            android:textColor="@color/c_secondary_text" />
         <ImageView
             android:id="@+id/iv_relocation"
             android:layout_width="wrap_content"

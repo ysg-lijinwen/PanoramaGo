@@ -1,7 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.bigkoo.convenientbanner.ConvenientBanner xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:bounds="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/convenientBanner"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    bounds:canLoop="true" />
+    android:layout_height="wrap_content">
+
+    <com.bigkoo.convenientbanner.ConvenientBanner
+        android:id="@+id/convenientBanner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        bounds:canLoop="true" />
+
+    <LinearLayout
+        android:id="@+id/llHomeSearch"
+        android:layout_width="match_parent"
+        android:layout_height="33dp"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:background="@color/c_main_white_bg"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:contentDescription="@string/content_description"
+            android:src="@mipmap/ic_search_gray" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/search" />
+    </LinearLayout>
+</FrameLayout>

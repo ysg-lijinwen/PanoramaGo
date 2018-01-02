@@ -1,18 +1,20 @@
 package com.panorama.go.activity
 
+import com.handmark.pulltorefresh.library.PullToRefreshBase
 import com.panorama.base.MvpBaseActivity
 import com.panorama.base.view.recydivider.ItemDecorations
 import com.panorama.go.R
 import com.panorama.go.adapter.SearchResultAdapter
 import com.panorama.go.bean.ListBean
 import com.panorama.go.presenter.SearchResultPresenter
+import com.panorama.go.util.finishRequest
 import com.panorama.go.util.hideSoftInputFromWindow
 import com.panorama.go.util.showToast
 import com.panorama.go.util.singleClick
 import com.panorama.go.view.IViewSearchResult
+import com.yanzhenjie.recyclerview.swipe.refresh.RecyclerView1
 import kotlinx.android.synthetic.main.activity_search_result.*
-import kotlinx.android.synthetic.main.v_search_top.*
-import org.jetbrains.anko.startActivity
+import kotlinx.android.synthetic.main.v_search.*
 
 /**
  * 搜索结果
@@ -63,8 +65,17 @@ class SearchResultActivity : MvpBaseActivity<IViewSearchResult, SearchResultPres
         searchResultAdapter.setOnItemClickListener { holder ->
             //            val url = "https://www.baidu.com/?tn=57095150_2_oem_dg"
             val url = searchResultList[holder.adapterPosition].url
-            activity.startActivity<PanoramaGoActivity>("url" to url)
+//            activity.startActivity<PanoramaGoActivity>("url" to url) // TODO模拟器上暂时不支持，临时屏蔽
         }
+        rvSearchResult.setOnRefreshListener(object : PullToRefreshBase.OnRefreshListener2<RecyclerView1> {
+            override fun onPullDownToRefresh(refreshView: PullToRefreshBase<RecyclerView1>?, curPageNo: Int) {
+                rvSearchResult.finishRequest(true)
+            }
+
+            override fun onPullUpToRefresh(refreshView: PullToRefreshBase<RecyclerView1>?, curPageNo: Int) {
+                rvSearchResult.finishRequest(true)
+            }
+        })
     }
 
     private fun toSearch(key: String) {
@@ -80,7 +91,6 @@ class SearchResultActivity : MvpBaseActivity<IViewSearchResult, SearchResultPres
         searchResultList.addAll(list)
         searchResultAdapter.notifyDataSetChanged()
     }
-
 
     override fun onDestroy() {
         super.onDestroy()

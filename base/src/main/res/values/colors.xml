@@ -4,13 +4,13 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
-    <!--主蓝色，按钮可点击-->
-    <color name="c_main_orange">#ff7e00</color>
+    <!--主色-蓝色 -->
+    <color name="c_main_blue">#20a7fe</color>
     <!--黑色，文字主色，两个皆可-->
     <color name="c_main_text">#333333</color>
     <color name="c_main_text2">#2d2d2d</color>
     <!--次要文字-->
-    <color name="c_secondary_text">#777777</color>
+    <color name="c_secondary_text">#a8a8a8</color>
     <!--单位次要文字（时间日期，距离）-->
     <color name="c_secondary_text_2">#9b9b9b</color>
 
@@ -21,7 +21,7 @@
     <!--分割条，白-->
     <color name="c_divider_block">#f5f5f9</color>
     <!--背景色，白-->
-    <color name="c_main_white_bg">#ffffff</color>
+    <color name="c_main_white_bg">@color/c_white</color>
     <color name="window_list_category_1">#f8f9fa</color>
     <color name="window_list_category_2">#f4f4f5</color>
     <!--黑色-->
@@ -32,6 +32,9 @@
 
     <!--按钮不可点击-->
     <color name="c_button_enable">#FFA200</color>
+
+    <!--红色-->
+    <color name="c_white">#ffffff</color>
     <!--红色-->
     <color name="c_red">#ff3c3c</color>
     <!-- 红色 -->
@@ -59,6 +62,7 @@
     <color name="c_gray">#393a3e</color>
     <color name="c_gray1">#7d8074</color>
     <color name="c_hint_text">@color/c_gray1</color>
+    <color name="c_gray_bg">#e7ecf2</color>
     <!--///////////////////带有透明的颜色/////////////////-->
     <!-- 70%透明 -->
     <color name="c_transparent_background_70">#40000000</color>

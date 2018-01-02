@@ -8,7 +8,7 @@
 
     <include
         android:id="@+id/i_top_layout"
-        layout="@layout/v_top_bar_second" />
+        layout="@layout/v_top_bar_second2" />
 
     <com.player.renderer.PanoPlayerSurfaceView
         android:id="@+id/glview"

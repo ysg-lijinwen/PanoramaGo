@@ -265,9 +265,7 @@ class PanoramaGoActivity : BaseActivity(), IPanoPlayerListener, IPanoPlayerVideo
             //path = "mnt/sdcard/video-103729.mp4";
             //path = "rtmp://222.211.65.243/live/S23811315370860655221";
             //path = "rtsp://192.168.42.1/live";
-//            path = "http://media.qicdn.detu.com/@/70955075-5571-986D-9DC4-450F13866573/2016-05-19/573d15dfa19f3-2048x1024.m3u8"//sdk提供
-            path = "assets://video01.mp4"//本地视频
-//            path = "assets://video02.mov"//本地视频
+            path = "http://media.qicdn.detu.com/@/70955075-5571-986D-9DC4-450F13866573/2016-05-19/573d15dfa19f3-2048x1024.m3u8"//sdk提供
 
             if (TextUtils.isEmpty(path)) {
                 panoplayerurl.setXmlUrl("http://www.detu.com/ajax/pano/xml/159891")
