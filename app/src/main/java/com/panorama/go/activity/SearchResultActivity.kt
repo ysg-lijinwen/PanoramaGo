@@ -35,7 +35,7 @@ class SearchResultActivity : MvpBaseActivity<IViewSearchResult, SearchResultPres
 
     override fun initWidget() {
         super.initWidget()
-        rvSearchResult.addItemDecoration(ItemDecorations.vertical(context).type(0, R.drawable.recycler_item_divider).create())
+        rvSearchResult.addItemDecoration(ItemDecorations.vertical(context).type(0, R.drawable.recycler_item_divider_white).create())
         rvSearchResult.adapter = searchResultAdapter
 
         (0 until 10).forEach { i ->

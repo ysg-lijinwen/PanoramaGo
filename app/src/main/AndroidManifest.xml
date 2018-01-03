@@ -39,9 +39,10 @@
         </activity>
         <activity android:name=".activity.SearchActivity" />
         <activity android:name=".activity.SearchResultActivity" />
-        <!--<activity-->
-            <!--android:name=".activity.PanoramaGoActivity"-->
-            <!--android:configChanges="keyboardHidden|orientation|screenSize" />-->
+        <!-- <activity -->
+        <!-- android:name=".activity.PanoramaGoActivity" -->
+        <!-- android:configChanges="keyboardHidden|orientation|screenSize" /> -->
+        <activity android:name=".activity.WebViewActivity"></activity>
     </application>
 
 </manifest>

@@ -78,7 +78,7 @@ class HomeFragment : MvpBaseFragment2<IViewHome, HomePresenter>(), IViewHome {
         val layoutManager = LinearLayoutManager(context)
         layoutManager.orientation = LinearLayoutManager.VERTICAL
         rootView.rvHome.layoutManager = layoutManager
-        rootView.rvHome.addItemDecoration(ItemDecorations.grid(context).type(0, R.drawable.recycler_item_divider).create())
+        rootView.rvHome.addItemDecoration(ItemDecorations.grid(context).type(0, R.drawable.recycler_item_divider_white).create())
         rootView.rvHome.adapter = informationAdapter
 
         (0 until 10).forEach { i ->
