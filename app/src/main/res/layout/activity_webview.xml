@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_web_content_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <include
+        android:id="@+id/i_wv_header"
+        layout="@layout/v_wv_top_bar" />
+
+    <FrameLayout
+        android:id="@+id/fl_web"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/i_wv_header">
+
+        <TextView
+            android:id="@+id/tv_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="请稍后，正在加载外部链接..."
+            android:textColor="@color/c_main_text"
+            android:textSize="18sp" />
+
+        <WebView
+            android:id="@+id/wvWeb"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+        <include layout="@layout/com_link_failed" />
+
+        <include layout="@layout/v_list_data_empty_net" />
+
+        <include layout="@layout/v_web_progress_bar" />
+
+    </FrameLayout>
+
+</RelativeLayout>

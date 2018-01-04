@@ -36,7 +36,7 @@ class SearchActivity : MvpBaseActivity<IViewSearch, SearchPresenter>(), IViewSea
         super.initWidget()
         emptyView = EmptyViewBase(context)
         emptyView.setEmptyText("暂无记录")
-        rvHotKey.addItemDecoration(ItemDecorations.vertical(context).type(0, R.drawable.recycler_item_divider).create())
+        rvHotKey.addItemDecoration(ItemDecorations.vertical(context).type(0, R.drawable.recycler_item_divider_black_1dp).create())
         if (hotKeyList.firstOrNull() == null) {
 //            rvHotKey.visible(false)
             rvHotKey.setEmptyView(emptyView)
